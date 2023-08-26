@@ -1,6 +1,10 @@
 GW := gw
 PB := pb
 
+.PHONY: gorun
+gorun:
+	go run --race -v .
+
 .PHONY: protoc-install
 protoc-install:
 ifdef type
