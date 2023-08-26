@@ -1,0 +1,25 @@
+syntax = "proto3";
+package users;
+option go_package = "./users";
+
+import "google/protobuf/any.proto";
+import "google/api/annotations.proto";
+
+service Users {
+  rpc Ping(stream PingDTO) returns (stream ApiResponse) {
+    option (google.api.http) = {
+      post: "/"
+    };
+  }
+}
+
+message PingDTO {
+  string test = 1;
+}
+
+message ApiResponse {
+  int32 stat_code = 1;
+  string stat_message = 2;
+  string err_message = 3;
+  google.protobuf.Any data = 4;
+}
